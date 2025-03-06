@@ -1,0 +1,175 @@
+# Supabase 项目配置文件
+# 用于在同一主机上区分不同 Supabase 项目的字符串标识符
+# 默认使用运行 `supabase init` 时的工作目录名
+project_id = "nuxt-gain"
+
+# API 服务配置
+[api]
+enabled = true
+# API 服务端口
+port = 54321
+# 要在 API 中暴露的数据库 schema
+# 这些 schema 中的表格、视图和存储过程都会获得 API 端点
+# public 和 storage schema 总是会被包含
+schemas = ["public", "storage", "graphql_public"]
+# 添加到每个请求的 search_path 中的额外 schema
+# public schema 总是会被包含
+extra_search_path = ["public", "extensions"]
+# 从视图、表格或存储过程返回的最大行数
+# 用于限制意外或恶意请求的负载大小
+max_rows = 1000
+
+# 数据库配置
+[db]
+# 本地数据库 URL 使用的端口
+port = 54322
+# 用于 db diff 命令初始化影子数据库的端口
+shadow_port = 54320
+# 使用的数据库主版本号，必须与远程数据库版本相同
+# 可以在远程数据库上运行 `SHOW server_version;` 来检查
+major_version = 15
+
+# 数据库连接池配置
+[db.pooler]
+enabled = false
+# 本地连接池使用的端口
+port = 54329
+# 指定服务器连接何时可以被其他客户端重用
+# 支持的池模式: `transaction`（事务级）, `session`（会话级）
+pool_mode = "transaction"
+# 每个用户/数据库对允许的服务器连接数
+default_pool_size = 20
+# 允许的最大客户端连接数
+max_client_conn = 100
+
+# 实时功能配置
+[realtime]
+enabled = true
+# 通过 IPv4 或 IPv6 绑定实时功能
+# ip_version = "IPv6"
+# HTTP 请求头的最大长度（字节）
+# max_header_length = 4096
+
+# Supabase Studio 配置
+[studio]
+enabled = true
+# Studio 使用的端口
+port = 54323
+# 前端连接的 API 服务器外部 URL
+api_url = "http://127.0.0.1"
+# 用于 Supabase Studio AI 功能的 OpenAI API 密钥
+openai_api_key = "env(OPENAI_API_KEY)"
+
+# 邮件测试服务器配置
+# 本地开发环境中的邮件不会真实发送，而是可以在 Web 界面查看
+[inbucket]
+enabled = true
+# 邮件测试服务器 Web 界面使用的端口
+port = 54324
+# 取消注释以下行来暴露额外的测试端口
+# smtp_port = 54325
+# pop3_port = 54326
+
+# 文件存储配置
+[storage]
+enabled = true
+# 允许的最大文件大小
+file_size_limit = "50MiB"
+
+# 认证配置
+[auth]
+enabled = true
+# 网站基础 URL，用于重定向白名单和构建邮件中的 URL
+site_url = "http://localhost:3000"
+# 认证提供商允许重定向的完整 URL 列表
+additional_redirect_urls = ["https://127.0.0.1:3000", "https://localhost:3000", "http://localhost:54321"]
+# JWT 令牌有效期（秒）
+# 默认 3600（1小时），最大 604,800（1周）
+jwt_expiry = 3600
+# 如果禁用，刷新令牌将永不过期
+enable_refresh_token_rotation = true
+# 允许在指定时间间隔内重用过期的刷新令牌（秒）
+# 需要 enable_refresh_token_rotation = true
+refresh_token_reuse_interval = 10
+# 允许/禁止新用户注册
+enable_signup = true
+# 允许/禁止测试手动账号关联
+enable_manual_linking = false
+
+# 邮件认证配置
+[auth.email]
+# 允许/禁止通过邮件注册新用户
+enable_signup = true
+# 如果启用，用户更改邮箱时需要同时确认新旧邮箱
+# 如果禁用，只需确认新邮箱
+double_confirm_changes = true
+# 如果启用，用户需要先确认邮箱才能登录
+enable_confirmations = false
+
+# 短信认证配置
+[auth.sms]
+# 允许/禁止通过短信注册新用户
+enable_signup = true
+# 如果启用，用户需要先确认手机号才能登录
+enable_confirmations = false
+# 发送验证码的消息模板
+template = "Your code is {{ .Code }} ."
+
+# 用于测试的预定义手机号码和验证码映射
+[auth.sms.test_otp]
+# 4152127777 = "123456"
+
+# Twilio 短信服务配置
+[auth.sms.twilio]
+enabled = false
+account_sid = ""
+message_service_sid = ""
+# 不要将 Twilio 认证令牌提交到 git，使用环境变量替代
+auth_token = "env(SUPABASE_AUTH_SMS_TWILIO_AUTH_TOKEN)"
+
+# 外部 OAuth 提供商配置
+# 支持的提供商包括: apple, azure, bitbucket, discord, facebook, github, gitlab,
+# google, keycloak, linkedin_oidc, notion, twitch, twitter, slack, spotify, workos, zoom
+[auth.external.google]
+enabled = true
+client_id = "env(NUXT_GOOGLE_CLIENT_ID)"
+# 使用环境变量替代 OAuth 提供商密钥
+secret = "env(NUXT_GOOGLE_CLIENT_SECRET)"
+# 覆盖默认的认证重定向 URL
+redirect_uri = "http://localhost:54321/auth/v1/callback"
+# 覆盖默认的认证提供商 URL
+# 用于支持自托管 gitlab、单租户 Azure 或其他第三方 OIDC 提供商
+url = ""
+
+[auth.external.github]
+enabled = true
+client_id = "env(NUXT_GITHUB_CLIENT_ID)"
+# 使用环境变量替代 OAuth 提供商密钥
+secret = "env(NUXT_GITHUB_CLIENT_SECRET)"
+# 覆盖默认的认证重定向 URL
+redirect_uri = "http://localhost:54321/auth/v1/callback"
+# 覆盖默认的认证提供商 URL
+# 用于支持自托管 gitlab、单租户 Azure 或其他第三方 OIDC 提供商
+url = ""
+
+# 分析功能配置
+[analytics]
+enabled = false
+port = 54327
+vector_port = 54328
+# 配置支持的后端: postgres, bigquery
+backend = "postgres"
+
+# 实验性功能配置
+# 实验性功能可能随时被废弃
+[experimental]
+# 配置 Postgres 存储引擎使用 OrioleDB (S3)
+orioledb_version = ""
+# 配置 S3 存储桶 URL，例如：<bucket_name>.s3-<region>.amazonaws.com
+s3_host = "env(S3_HOST)"
+# 配置 S3 存储桶区域，例如：us-east-1
+s3_region = "env(S3_REGION)"
+# 配置 S3 存储桶的 AWS_ACCESS_KEY_ID
+s3_access_key = "env(S3_ACCESS_KEY)"
+# 配置 S3 存储桶的 AWS_SECRET_ACCESS_KEY
+s3_secret_key = "env(S3_SECRET_KEY)"
