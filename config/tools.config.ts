@@ -5,7 +5,7 @@ export default {
       name: 'AI Document Generator',
       description: '使用AI生成专业文档',
       icon: 'mdi:file-document',
-      path: '/app/document',
+      path: '/document',
       isEnabled: true,
       features: [
         {

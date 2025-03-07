@@ -1,13 +1,13 @@
-// 导入JSON翻译文件
+// Import JSON translation files
 import common from './zh/common.json'
 import landing from './zh/landing.json'
 import auth from './zh/auth.json'
 import dashboard from './zh/dashboard.json'
 
-// 直接导出翻译
+// Export messages directly
 export default {
-  common,
-  landing,
-  auth,
-  dashboard
+  ...common,
+  ...landing,
+  ...auth,
+  ...dashboard
 } 

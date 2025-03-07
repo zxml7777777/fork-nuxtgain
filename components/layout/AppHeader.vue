@@ -33,7 +33,7 @@ const items = computed(() => (
     // [
     //   {
     //     label: 'Profile Settings',
-    //     to: '/app/settings',
+    //     to: '/settings',
     //   },
     // ],
     [{
@@ -46,7 +46,7 @@ const items = computed(() => (
         label: t('dashboard.pageTitle'),
         icon: 'i-heroicons-home',
         click: async () => {
-          await navigateTo(localePath('/app/dashboard'))
+          await navigateTo(localePath('/dashboard'))
         },
       },
       {

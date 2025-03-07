@@ -41,9 +41,9 @@ watch(supabaseUser, (newVal) => {
     
     // 只在非主页路径和非Dashboard路径时才自动导航到Dashboard
     const currentPath = router.currentRoute.value.path
-    if (!currentPath.startsWith('/app/Dashboard') && currentPath !== '/' && !currentPath.startsWith('/ua')) {
+    if (!currentPath.startsWith('/Dashboard') && currentPath !== '/' && !currentPath.startsWith('/ua')) {
       console.log('Navigating to Dashboard...')
-      navigateTo(localePath('/app/Dashboard'))
+      navigateTo(localePath('/Dashboard'))
     }
   }
 }, { immediate: true })
@@ -64,7 +64,7 @@ onMounted(async () => {
 
   // if (_session) {
   //   if (route.path.includes('/auth')) {
-  //     await navigateTo(localePath('/app/dashboard'))
+  //     await navigateTo(localePath('/dashboard'))
   //   }
   // } else {
   //   await navigateTo(localePath('/auth'))

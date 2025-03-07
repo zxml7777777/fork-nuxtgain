@@ -78,7 +78,7 @@ const afterCheckout = computed(() => useRouter().currentRoute.value.query.sessio
     </ClientOnly>
     <a
       v-if="afterCheckout"
-      :href="finishedProgress ? localePath('/app/dashboard') : 'javascript:void(0)'"
+      :href="finishedProgress ? localePath('/dashboard') : 'javascript:void(0)'"
       class="text-lg text-brand-blue underline hover:no-underline"
       :class="{ 'opacity-50 cursor-not-allowed': !finishedProgress }"
     >

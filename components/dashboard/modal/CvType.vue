@@ -20,7 +20,7 @@ const blockClasses = `
     <div class="flex justify-between mt-9">
       <div
         :class="blockClasses"
-        @click="navigateTo('/app/cv/')"
+        @click="navigateTo('/')"
       >
         <!-- TODO: if it will be using add locale to redirect -->
         <UIcon

@@ -12,18 +12,18 @@ export default defineNuxtConfig({
           rel: 'icon',
           type: 'image/png',
           sizes: '32x32',
-          href: '/favicon//favicon-32x32.png'
+          href: '/favicon/favicon-32x32.png'
         },
         {
           rel: 'icon',
           type: 'image/png',
           sizes: '16x16',
-          href: '/favicon//favicon-16x16.png'
+          href: '/favicon/favicon-16x16.png'
         },
         {
           rel: 'apple-touch-icon',
           sizes: '180x180',
-          href: '/favicon//apple-touch-icon.png'
+          href: '/favicon/apple-touch-icon.png'
         },
         { rel: 'manifest', href: '/favicon/site.webmanifest' }
       ]
@@ -181,7 +181,7 @@ export default defineNuxtConfig({
 
   // Configure i18n for internationalization
   i18n: {
-    vueI18n: '~/app/i18n/vue-i18n.ts',
+    vueI18n: './i18n/vue-i18n.ts',
     defaultLocale: 'en',
     locales: [
       {
@@ -204,12 +204,13 @@ export default defineNuxtConfig({
       }
     ],
     detectBrowserLanguage: {
-      useCookie: false,
+      useCookie: true,
       cookieKey: 'i18n_redirected',
       redirectOn: 'root',
     },
     strategy: 'prefix_except_default',
-    langDir: 'i18n/' // 确保这行指向app/i18n目录
+    langDir: './i18n/',
+    lazy: true
   },
 
   // Set default color mode
@@ -280,6 +281,13 @@ export default defineNuxtConfig({
         }
       }
     },
+    esbuild: {
+      tsconfigRaw: {
+        compilerOptions: {
+          allowImportingTsExtensions: true
+        }
+      }
+    }
   },
 
   // Set compatibility date for Nuxt

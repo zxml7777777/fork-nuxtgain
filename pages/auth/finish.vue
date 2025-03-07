@@ -7,7 +7,7 @@ useHead({
 })
 
 onMounted(async () => {
-  await navigateTo(localePath('/app/dashboard/'))
+  await navigateTo(localePath('/dashboard/'))
 })
 </script>
 

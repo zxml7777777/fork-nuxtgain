@@ -2,7 +2,7 @@
 import { ThemeSupa } from '@supabase/auth-ui-shared'
 import { Auth } from '@nuxtbase/auth-ui-vue'
 
-import { englishWords } from '~/i18n/en'
+import { englishWords } from '../../i18n/en'
 
 const props = defineProps<{
   redirectTo?: string
