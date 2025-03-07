@@ -6,11 +6,11 @@
 //   return Math.ceil(_posts.length / blogCountLimit)
 // })
 
-const pageTitle = 'MagicResumeAI - The Ultimate AI-Powered Resume Builder for Tech Professionals'
-const pageDescription = 'MagicResumeAI is an AI-powered resume builder designed for tech professionals. Create customizable, ATS-friendly resumes quickly and efficiently. Secure and user-friendly, MagicResumeAI ensures your resume stands out in competitive job markets.'
-const canonicalPath = 'https://www.magic-resume.ai/blog/'
-const image = 'https://www.magic-resume.ai/summary_image.jpeg'
-const socialImageAlt = 'AI-Powered Resume Builder'
+const pageTitle = 'AIToolSite - The Ultimate AI-Powered Tool Platform'
+const pageDescription = 'AIToolSite is an AI-powered platform designed for professionals. Create customizable, professional documents quickly and efficiently. Secure and user-friendly, AIToolSite enhances your workflow with AI technology.'
+const canonicalPath = 'https://www.aitoolsite.com/blog/'
+const image = 'https://www.aitoolsite.com/summary_image.jpeg'
+const socialImageAlt = 'AI-Powered Document Tools'
 
 useHead({
   title: pageTitle,

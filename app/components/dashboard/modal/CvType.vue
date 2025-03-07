@@ -11,11 +11,11 @@ const blockClasses = `
     <TypographyText
       class="text-center"
       :title="3"
-      text="Start Your Resume Journey"
+      text="Start Your Document Journey"
     />
     <TypographyText class="text-center whitespace-pre-line text-neutral-500">
       Choose how you'd like to begin. <br>
-      Create a custom resume with our AI assistant or upload and enhance an existing one.
+      Create a custom document with our AI assistant or upload and enhance an existing one.
     </TypographyText>
     <div class="flex justify-between mt-9">
       <div
@@ -28,13 +28,13 @@ const blockClasses = `
           name="i-heroicons-pencil"
         />
         <TypographyText class="font-bold">
-          Create a new resume
+          Create a new document
         </TypographyText>
         <TypographyText
           size="14px"
           class="text-center"
         >
-          Fill predefined sections to swiftly craft your resume.
+          Fill predefined sections to swiftly craft your document.
         </TypographyText>
       </div>
       <div :class="blockClasses">
@@ -43,13 +43,13 @@ const blockClasses = `
           name="i-heroicons-arrow-up-tray"
         />
         <TypographyText class="font-bold">
-          Upload Existing Resume
+          Upload Existing Document
         </TypographyText>
         <TypographyText
           size="14px"
           class="text-center"
         >
-          Upload your resume and let our AI enhance it instantly.
+          Upload your document and let our AI enhance it instantly.
         </TypographyText>
       </div>
     </div>

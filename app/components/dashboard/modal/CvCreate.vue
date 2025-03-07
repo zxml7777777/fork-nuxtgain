@@ -6,12 +6,12 @@ const props = defineProps<{ modelValue: boolean }>()
 const emit = defineEmits(['submit', 'update:modelValue'])
 const { t } = useI18n()
 const createModalVisible = ref(props.modelValue)
-const resumeName = ref('')
+const documentName = ref('')
 const submitDisabled = ref()
 
 function submit() {
   submitDisabled.value = true
-  emit('submit', resumeName.value)
+  emit('submit', documentName.value)
 }
 
 function close() {
@@ -36,15 +36,15 @@ watch(createModalVisible, () => {
       <TypographyText
         class="text-center"
         :title="3"
-        :text="t('components.createCvModal.nameYourResume')"
+        :text="t('components.createCvModal.nameYourDocument')"
       />
       <FormInput
-        v-model="resumeName"
-        name="resumeName"
+        v-model="documentName"
+        name="documentName"
         class="w-full"
-        :label="t('components.createCvModal.resumeName')"
-        :placeholder="t('components.createCvModal.resumeNamePlaceholder')"
-        :tooltip="t('components.createCvModal.resumeNameTooltip')"
+        :label="t('components.createCvModal.documentName')"
+        :placeholder="t('components.createCvModal.documentNamePlaceholder')"
+        :tooltip="t('components.createCvModal.documentNameTooltip')"
       />
       <div class="flex justify-between w-full">
         <UButton
@@ -57,7 +57,7 @@ watch(createModalVisible, () => {
           type="submit"
           color="blue"
           :label="t('components.createCvModal.createDocument')"
-          :disabled="!resumeName || submitDisabled"
+          :disabled="!documentName || submitDisabled"
           :loading="submitDisabled"
         />
       </div>

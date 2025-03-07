@@ -1,0 +1,12 @@
+{
+  "pageTitle": "Dashboard",
+  "myDocuments": "My Documents",
+  "recentActivity": "Recent Activity",
+  "createNew": "Create New Document",
+  "documentStats": "Document Statistics",
+  "documentCount": "Total Documents",
+  "documentGenerated": "AI Generated",
+  "latestDocument": "Latest Document",
+  "noDocuments": "You haven't created any documents yet",
+  "getStarted": "Get Started Now"
+} 

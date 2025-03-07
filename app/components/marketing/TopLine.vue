@@ -3,6 +3,7 @@
   lang='ts'
 >
 const { t } = useI18n()
+const data = ref(true)
 </script>
 
 <template>
@@ -13,17 +14,17 @@ const { t } = useI18n()
     <div class="font-semibold flex gap-3 container mx-auto py-2 px-4">
       <div class="flex items-center gap-1">
         <Icon
-          name="mdi:resume"
+          name="mdi:file-document"
           class="text-brand-blue"
         />
-        <span class="text-xs">{{ t('common.resumesCreated') }}: {{ 1000 }}</span>
+        <span class="text-xs">{{ t('common.documentsCreated') }}: {{ 1000 }}</span>
       </div>
       <div class="flex items-center gap-1">
         <Icon
           name="mdi:thunder-outline"
           class="text-yellow-500 text-lg"
         />
-        <span class="text-xs">{{ t('common.resumesGenerated') }}: {{ 1000 }}</span>
+        <span class="text-xs">{{ t('common.documentsGenerated') }}: {{ 1000 }}</span>
       </div>
     </div>
   </div>

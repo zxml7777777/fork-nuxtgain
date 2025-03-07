@@ -18,7 +18,7 @@ spec:
         - name: regcred
       containers:
         - name: nuxt-app
-          image: cybercowboy13/magicresume:latest
+          image: cybercowboy13/aitoolsite:latest
           imagePullPolicy: Always
           ports:
             - containerPort: 3000 # Or the port your Nuxt app uses

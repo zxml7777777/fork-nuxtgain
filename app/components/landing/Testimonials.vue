@@ -7,32 +7,32 @@ const testimonials = ref([
   {
     link: 'https://placehold.co/500x170',
     image: 'https://placehold.co/500x170',
-    alt: 'MagicResume customer reviews',
+    alt: 'AIToolSite customer reviews',
   },
   {
     link: 'https://placehold.co/500x170',
     image: 'https://placehold.co/500x170',
-    alt: 'MagicResume customer reviews'
+    alt: 'AIToolSite customer reviews'
   },
   {
     link: 'https://placehold.co/500x170',
     image: 'https://placehold.co/500x170',
-    alt: 'MagicResume customer reviews'
+    alt: 'AIToolSite customer reviews'
   },
   {
     link: 'https://placehold.co/500x170',
     image: 'https://placehold.co/500x170',
-    alt: 'MagicResume reviews'
+    alt: 'AIToolSite reviews'
   },
   {
     link: 'https://placehold.co/500x170',
     image: 'https://placehold.co/500x170',
-    alt: 'MagicResume feedback'
+    alt: 'AIToolSite feedback'
   },
   {
     link: 'https://placehold.co/500x170',
     image: 'https://placehold.co/500x170',
-    alt: 'MagicResume customer reviews'
+    alt: 'AIToolSite customer reviews'
   },
 ])
 </script>

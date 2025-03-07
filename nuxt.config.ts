@@ -37,7 +37,7 @@ export default defineNuxtConfig({
 
   // Define site metadata
   site: {
-    url: 'https://magic-resume.ai',
+    url: 'https://aitoolsite.com',
     name: 'NuxtGain',
   },
 
@@ -181,26 +181,35 @@ export default defineNuxtConfig({
 
   // Configure i18n for internationalization
   i18n: {
-    vueI18n: '~/i18n/vue-i18n.ts',
+    vueI18n: '~/app/i18n/vue-i18n.ts',
     defaultLocale: 'en',
     locales: [
       {
         code: 'en',
         name: 'English',
         iso: 'en-US',
+        file: 'en.ts'
       },
       {
         code: 'ua',
         name: 'Українська',
         iso: 'uk-UA',
+        file: 'ua.ts'
       },
+      {
+        code: 'zh',
+        name: '中文',
+        iso: 'zh-CN',
+        file: 'zh.ts'
+      }
     ],
     detectBrowserLanguage: {
-      useCookie: true,
+      useCookie: false,
       cookieKey: 'i18n_redirected',
       redirectOn: 'root',
     },
     strategy: 'prefix_except_default',
+    langDir: 'i18n/' // 确保这行指向app/i18n目录
   },
 
   // Set default color mode

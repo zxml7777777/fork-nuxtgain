@@ -1,19 +1,22 @@
 <script setup>
+import { useI18n } from 'vue-i18n'
+const { t } = useI18n()
+
 const menuitems = [
   {
-    title: "Features",
+    title: t('landing.features'),
     path: "#",
   },
   {
-    title: "Pricing",
+    title: t('landing.pricing'),
     path: "/pricing",
   },
   {
-    title: "About",
+    title: t('landing.about'),
     path: "/about",
   },
   {
-    title: "Contact",
+    title: t('landing.contact'),
     path: "/contact",
   },
 ];
@@ -37,7 +40,7 @@ const open = ref(false);
               viewBox="0 0 20 20"
               xmlns="http://www.w3.org/2000/svg"
             >
-              <title>Menu</title>
+              <title>{{ t('landing.menu') }}</title>
               <path
                 v-show="open"
                 fill-rule="evenodd"
@@ -69,15 +72,15 @@ const open = ref(false);
         </ul>
         <div class="lg:hidden flex items-center mt-3 gap-4">
           <LandingLink href="#" styleName="muted" block size="md"
-            >Log in</LandingLink
+            >{{ t('landing.login') }}</LandingLink
           >
-          <LandingLink href="#" size="md" block>Sign up</LandingLink>
+          <LandingLink href="#" size="md" block>{{ t('landing.signup') }}</LandingLink>
         </div>
       </nav>
       <div>
         <div class="hidden lg:flex items-center gap-4">
-          <a href="#">Log in</a>
-          <LandingLink href="#" size="md">Sign up</LandingLink>
+          <a href="#">{{ t('landing.login') }}</a>
+          <LandingLink href="#" size="md">{{ t('landing.signup') }}</LandingLink>
         </div>
       </div>
     </header>

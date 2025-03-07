@@ -60,6 +60,9 @@ const { t } = useI18n()
   <section
     class="max-w-4xl mx-auto"
   >
+    <h2 class="text-4xl lg:text-5xl font-bold lg:tracking-tight text-center">
+      {{ t('landing.solutionTitle') }}
+    </h2>
     <div class="mt-12 flex flex-col md:flex-row gap-[30px] text-md ">
       <div class="flex-1 p-[30px] rounded-lg flex flex-col gap-4 bg-emerald-100/70 text-emerald-700">
         <ul>

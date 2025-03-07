@@ -3,7 +3,7 @@ const { t } = useI18n()
 const localePath = useLocalePath()
 
 useHead({
-  title: 'Magic-Resume Finish Auth',
+  title: 'AIToolSite Finish Auth',
 })
 
 onMounted(async () => {

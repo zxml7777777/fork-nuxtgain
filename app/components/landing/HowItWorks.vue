@@ -43,7 +43,7 @@ function setActiveStep(step: number) {
             name="mdi:robot-excited-outline"
             class="mr-2"
           />
-          Step 2: AI-Powered Resume Enhancement
+          Step 2: AI-Powered Document Enhancement
           <UIcon :name="activeStep === 1 ? 'i-heroicons-chevron-down' : 'i-heroicons-chevron-right'" />
         </div>
       </UButton>
@@ -92,7 +92,7 @@ function setActiveStep(step: number) {
           <NuxtImg
             src="landing/us/enrich.png"
             width="600"
-            alt="How to use MagicResume"
+            alt="How to use AIToolSite"
           />
         </div>
       </Transition>

@@ -1,11 +1,8 @@
-import { englishWords } from './en'
-import { ukrainianWords } from './ua'
+import { messages } from './index'
 
 export default defineI18nConfig(() => ({
   legacy: false,
   locale: 'en',
-  messages: {
-    en: englishWords,
-    ua: ukrainianWords,
-  },
+  fallbackLocale: 'en',
+  messages
 }))

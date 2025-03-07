@@ -18,7 +18,7 @@ const { data, error } = await useAsyncData(`content-${cleanPath}`, async () => {
 const { data: authorData } = await useAsyncData('home', () => queryContent('/authors').findOne())
 
 // Set the meta
-const baseUrl = 'https://www.magic-resume.ai'
+const baseUrl = 'https://www.aitoolsite.com'
 const canonicalPath = baseUrl + (`${path}/`).replace(/\/+$/, '/')
 const image = baseUrl + (data.value?.article?.socialImage.src || '/sample.webp')
 
@@ -31,7 +31,7 @@ const jsonScripts = [
       '@type': 'BlogPosting',
       'mainEntityOfPage': {
         '@type': 'WebPage',
-        '@id': 'https://www.magic-resume.ai'
+        '@id': 'https://www.aitoolsite.com'
       },
       'url': canonicalPath,
       'image': image,

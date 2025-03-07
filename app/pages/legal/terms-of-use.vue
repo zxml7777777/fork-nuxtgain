@@ -1,6 +1,6 @@
 <script setup lang="ts">
 useHead({
-  title: 'Magic-Resume Terms of Use',
+  title: 'AIToolSite Terms of Use',
 })
 </script>
 

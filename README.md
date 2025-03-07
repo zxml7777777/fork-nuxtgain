@@ -1,183 +1,149 @@
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
-[![GitHub stars](https://img.shields.io/github/stars/CyberCowboy404/nuxtgain.svg)](https://github.com/CyberCowboy404/nuxtgain/stargazers)
-[![GitHub forks](https://img.shields.io/github/forks/CyberCowboy404/nuxtgain.svg)](https://github.com/CyberCowboy404/nuxtgain/network)
-[![GitHub issues](https://img.shields.io/github/issues/CyberCowboy404/nuxtgain.svg)](https://github.com/CyberCowboy404/nuxtgain/issues)
+# NuxtGain 通用 AI 工具模板平台
 
-# NuxtGain: Production-Ready SaaS Boilerplate for Nuxt + Supabase
+## 项目概述
 
-## A Developer's Solution to Common Nuxt Challenges
+NuxtGain 是一个基于 Nuxt.js 构建的强大框架，旨在简化多个 AI 工具站点的快速创建和部署。通过将特定工具的代码与通用框架分离，NuxtGain 允许开发者使用一套核心代码库创建多个不同目的的 AI 工具网站。
 
-Building complex applications with Nuxt can be challenging, especially when it comes to SaaS projects. How do you handle state management, organize business logic, deal with environment variables, navigate Nuxt context in composables, and follow best practices? NuxtGain aims to simplify this process, offering a solid foundation based on real-world experience.
+## 核心目标
 
-NuxtGain isn't just a concept. It's the core of [magic-resume.ai](https://magic-resume.ai), an AI-powered resume builder for developers that's currently generating revenue in production. I'm now opening up this tried and tested setup to the community.
+1. **模块化设计**: 所有组件、功能和内容均采用模块化设计，便于重用和自定义
+2. **配置驱动**: 通过集中式配置文件控制站点设置，减少代码修改
+3. **多语言支持**: 改进的 i18n 系统，使内容管理和更新更加简单高效
+   - 详细使用指南请参考 [i18n 使用指南](./docs/i18n-guide.md)
+4. **工具抽象**: 轻松集成不同类型的 AI 工具，无需大量修改核心代码
 
-### Why Choose NuxtGain?
+## 迁移路线图
 
-- **Production-Tested**: Actively powers a profitable SaaS application.
-- **Comprehensive SaaS Setup**: Includes common SaaS features and integrations.
-- **Accelerate Development**: Reduces setup time for new Nuxt projects.
-- **Supabase Integration**: Built with Supabase as the primary database solution.
-- **Open Source**: Free for the community to use and improve.
+### 第一阶段：基础模板创建
 
-Nuxt may have a smaller ecosystem, compared to the NextJS, but it's powerful. NuxtGain is here to streamline your development process and prove that we can build robust applications. Got ideas to make it better? Jump in and contribute.
+1. **移除 Magic-Resume 特定内容** ✅
+   - 删除所有与简历工具相关的特定组件和功能 ✅
+   - 移除硬编码的 "Magic-Resume" 和 "resume" 术语 ✅
+   - 将特定于简历的数据结构转换为通用格式 ✅
 
-Let's make Nuxt gain again!
+2. **实现 i18n 内容系统重构** ✅
+   - 在 `i18n/` 目录下创建基于页面的 JSON 文件结构 ✅
+   - 每个页面对应一个 JSON 文件 (如 `landing.json`, `pricing.json`, `auth.json` 等) ✅
+   - 保持 TS 文件中仅包含必要的翻译键，将实际内容放在 JSON 中 ✅
+   - 创建一个自动加载所有 JSON 文件的系统 ✅
 
-Ready to start building? Dive into the details below and [join our discord](https://discord.gg/EyRuX26ahN)
+3. **建立统一配置系统** ✅
+   - 创建 `config/` 目录存放所有配置文件 ✅
+   - 实现 `site.config.ts` 用于站点基本信息配置 ✅
+   - 实现 `theme.config.ts` 用于主题和样式配置 ✅
+   - 实现 `tools.config.ts` 用于 AI 工具功能配置 ✅
 
-## Key Features
+### i18n 内容系统详细设计
 
-### Core Technologies 🚀
-- 🔧 Nuxt3 + Supabase integration
-- 📘 Fully TypeScript-based
-- 🎨 Tailwind CSS + Nuxt UI for styling
-- 🔜 Nuxt4 compatible
-
-### Development and Configuration ⚙️
-- 🏭 Production-ready Nuxt configurations
-- 🧹 ESLint configuration with Vue and Nuxt best practices
-- 🧠 Business logic and state management setup
-- 🧩 Configured and installed essential popular Nuxt modules
-
-### Authentication and User Management 🔐
-- 🔑 Supabase authentication integration
-- 🚪 Easy-to-use authentication component
-- 📊 Basic database tables for user handling
-
-### Internationalization and SEO 🌍
-- 🗣️ i18n configuration for translations
-- 🔍 SEO-ready setup
-
-### Payment and Transactions 💳
-- 💰 Stripe payment integration
-- 📝 Basic payment tables (one-time payments, subscriptions in progress)
-- 📧 Transactional emails with Brevo (free up to 300 emails per day)
-
-### Content Management 📚
-- 📝 Ready-to-use blog functionality
-
-### UI Components 🎛️
-- 🧱 Numerous components for landing pages, payment forms, and modals
-- 📮 Feedback forms
-
-### File Handling 📁
-- 🖼️ Image upload functionality
-
-### Deployment and DevOps 🚀
-- ☸️ Kubernetes deployment configurations
-- 🔄 GitHub Actions for container deployment to Kubernetes cluster
-- ▲ Vercel deployment configurations
-- ⚡ Vercel Edge deployment configurations
-
-### Analytics and Monitoring 📊
-- 📈 Analytics-ready setup (PostHog, GA4)
-
-### API and Server-side Features 🖥️
-- 🔌 Server endpoints for data handling and application logic
-- ⏰ Cron job routes for scheduled tasks (e.g., discount emails, transactional emails)
-
-### Additional SaaS Features 🛠️
-- 📄 Basic SaaS page templates
-
-## NuxtGain Quick Start Guide
-
-## 1. Set Up Supabase
-
-1. Initialize Supabase locally:
 ```
-npm run supabase:start
-```
-This command runs migrations, setting up basic tables, Row Level Security (RLS), indexes, triggers, and functions.
-
-2. Copy the environment variables:
-```
-cp .env.example .env
+app/
+└── i18n/
+    ├── en/
+    │   ├── common.json     # 公共翻译内容
+    │   ├── landing.json    # 首页内容
+    │   ├── pricing.json    # 定价页内容
+    │   ├── auth.json       # 验证页内容
+    │   ├── dashboard.json  # 仪表盘内容
+    │   └── ...
+    ├── ua/
+    │   ├── common.json
+    │   ├── landing.json
+    │   └── ...
+    ├── index.ts            # 导出所有翻译内容
+    └── vue-i18n.ts         # i18n 配置
 ```
 
-3. Update the `.env` file with your Supabase keys:
-- `SUPABASE_KEY`
-- `NUXT_SUPABASE_SERVICE_KEY`
-
-These keys are essential for core SaaS functionalities.
-
-## 2. Configure Authentication
-
-1. Edit `./supabase/config.toml` to set up authentication providers.
-
-Example configuration for Google OAuth:
-
-```toml
-[auth.external.google]
-enabled = true
-client_id = "your_client_id"
-secret = "your_secret"
-redirect_uri = "http://localhost:54321/auth/v1/callback"
+**示例: `common.json`**
+```json
+{
+  "save": "Save",
+  "continue": "Continue",
+  "remove": "Remove",
+  "current": "Current",
+  "startDate": "Start date",
+  "endDate": "End date",
+  "datePlaceholder": "MM/YYYY"
+}
 ```
 
-**Note:** Never commit OAuth provider secrets to git. Use environment variables for sensitive information.
-
-1. For more details on configuring auth providers, refer to the [Supabase Local Development Guide](https://supabase.com/docs/guides/cli/local-development?queryGroups=access-method&access-method=postgres#use-auth-locally).
-
-## 3. Final Configuration
-
-1. Review and update all other environment variables in the `.env` file to enable full functionality of your app.
-
-## 4. Launch Your App
-
-Run the development server:
-```
-npm run dev
+**示例: `landing.json`**
+```json
+{
+  "heroTitle1": "Stop Struggling with your Document",
+  "heroTitle2": "Let AI Do the Work for You",
+  "heroSubtitle": "Create a Professional Document in Just 10 Minutes",
+  "heroTrusted": "Trusted by {count} Users",
+  "heroGetStarted": "Create New Document",
+  "testimonials": "Testimonials"
+}
 ```
 
-Your NuxtGain app should now be up and running with authentication and user management enabled.
+**在 TS 文件中的使用方式:**
+```typescript
+// 从 en/index.ts 加载所有翻译
+export const englishWords = {
+  common: () => import('./en/common.json'),
+  landing: () => import('./en/landing.json'),
+  pricing: () => import('./en/pricing.json'),
+  // ...其他页面
+}
+```
 
-For additional configuration options and advanced features, please refer to our detailed documentation.
+## 配置系统详细设计
 
-# NuxtGain Documentation
+**配置目录结构:**
+```
+app/
+└── config/
+    ├── site.config.ts      # 站点基础配置
+    ├── theme.config.ts     # 主题和样式配置
+    ├── tools.config.ts     # AI 工具功能配置
+    └── i18n.config.ts      # 国际化配置
+```
 
-## Table of Contents
-- [Business Logic Organization](docs/business-logic-organization.md)
-- [Contributing](docs/CONTRIBUTING.md)
+**站点配置示例:**
+```typescript
+export default {
+  name: 'AIToolSite',         // 替代 Magic-Resume
+  domain: 'aitoolsite.com',   // 替代 magic-resume.ai
+  description: '使用 AI 增强您的工作流程',
+  logoPath: '/logo.svg',
+  contactEmail: 'support@aitoolsite.com',
+  socialLinks: {
+    twitter: 'https://twitter.com/aitoolsite',
+    facebook: 'https://facebook.com/aitoolsite',
+    // ...其他社交媒体
+  }
+}
+```
 
-We're continuously improving our documentation. If you have any questions or suggestions, please [open an issue](https://github.com/https://github.com/CyberCowboy404/nuxtgain/issues) on GitHub repository, or write it in [discord](https://discord.gg/EyRuX26ahN)
+## 实施步骤
 
-# Community and Support
+1. **基础模板创建**
+   - [x] 移除 Magic-Resume 特定内容和引用
+   - [x] 建立配置目录和基础配置文件
+   - [ ] 重构现有组件，移除特定工具依赖
 
-As the creator of NuxtGain, I'm here to help and discuss ideas. Reach out to me through:
+2. **i18n 系统重构**
+   - [x] 从 TS 文件中提取翻译内容到 JSON 文件
+   - [x] 为每个页面创建对应的 JSON 文件
+   - [x] 修改 i18n 加载逻辑，支持按需加载
 
-- [Discord](https://discord.gg/EyRuX26ahN)
-- [X (Twitter)](https://x.com/CyberCowboy404)
-- [LinkedIn](https://www.linkedin.com/in/nick-b-92589418b/)
+3. **组件抽象化**
+   - [ ] 将特定工具组件重构为通用组件
+   - [ ] 实现组件配置系统
+   - [ ] 创建可定制的工具模板
 
-For issues or feature requests, please use [GitHub Issues](https://github.com/your-repo/issues).
+4. **测试与调整**
+   - [x] 创建一个简单测试站点验证配置系统
+   - [x] 测试多语言支持和内容切换
+   - [ ] 验证组件复用和自定义能力
 
-Let's build something great together!
+## 下一步开发计划
 
-## License
+- **工具 API 抽象层**: 为不同的 AI 工具创建统一的 API 接口
+- **主题系统扩展**: 增强主题系统，支持更多自定义选项
+- **内容生成工具**: 开发工具自动生成 i18n 文件和博客内容
+- **部署流程优化**: 创建自动化脚本简化新站点部署
 
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
-
-NuxtGain is a battle-tested SaaS boilerplate for Nuxt3...
-
-## Get Involved
-
-Ready to supercharge your Nuxt3 development? Here's how you can get started with NuxtGain:
-
-1. 🚀 **Try It Out**: Clone the repo and start building your next SaaS project.
-   ```
-   git clone https://github.com/zxml7777777/fork-nuxtgain.git
-   ```
-
-2. ⭐ **Show Your Support**: If NuxtGain helps you, consider giving it a star on GitHub.
-
-3. 🐛 **Report Issues**: Encountered a bug? [Open an issue](https://github.com/CyberCowboy404/nuxtgain/issues) and help improve NuxtGain.
-
-4. 🤝 **Contribute**: Got ideas or fixes? [Submit a pull request](https://github.com/CyberCowboy404/nuxtgain/pulls) and be part of NuxtGain's growth.
-
-5. 💬 **Spread the Word**: Share NuxtGain with your network and help the community grow.
-
-6. ☕ **Buy Me a Coffee**: If you find NuxtGain valuable, consider [buying me a coffee](https://buymeacoffee.com/cybercowboy404) to support ongoing development.
-
-7. 📄 **Use Magic Resume**: Need a stellar developer resume? Check out [Magic Resume](https://magic-resume.ai), the AI-powered resume builder that NuxtGain powers!
-
-Join us in making Nuxt3 development faster, easier, and more enjoyable!
+通过这种模块化、配置驱动的方法，NuxtGain 将使您能够快速部署多个 AI 工具站点，只需更改配置和实现特定工具的核心功能，大大减少开发时间和资源投入。

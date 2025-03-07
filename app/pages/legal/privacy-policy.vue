@@ -1,6 +1,6 @@
 <script setup lang="ts">
 useHead({
-  title: 'Magic-Resume Privacy Policy',
+  title: 'AIToolSite Privacy Policy',
 })
 </script>
 

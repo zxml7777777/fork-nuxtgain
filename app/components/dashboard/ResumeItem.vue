@@ -54,13 +54,13 @@ const editedTime = computed(() => {
 
         <TypographyText
           class="text-center"
-          text="Add New Resume"
+          text="Add New Document"
           :title="4"
         />
 
         <TypographyText
           class="text-center"
-          text="Ready for your next opportunity? Click to add a new resume and let AI do the heavy lifting."
+          text="Ready for your next project? Click to add a new document and let AI do the heavy lifting."
         />
       </div>
     </div>

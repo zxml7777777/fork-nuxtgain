@@ -104,7 +104,7 @@ function SectionHeader({ title }: { title: string }) {
         <ul class="flex flex-col gap-1">
           <li class="text-sm text-gray-500 mb-[7px]">
             <a
-              href="https://www.linkedin.com/company/magicresumeai/about"
+              href="https://www.linkedin.com/company/aitoolsite"
               target="_blank"
               class="flex items-center gap-2"
             >
@@ -130,7 +130,7 @@ function SectionHeader({ title }: { title: string }) {
           </li>
           <li class="text-sm text-gray-500 mb-[7px]">
             <a
-              href="https://x.com/MagicResumeAI"
+              href="https://x.com/AIToolSite"
               target="_blank"
               class="flex items-center gap-2"
             >
