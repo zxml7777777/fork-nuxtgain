@@ -1,4 +1,17 @@
 <script setup lang="ts">
+interface Product {
+  id: number;
+  name: string;
+  code: string;
+  subtitle: string;
+  price: number;
+  features: string[];
+  buttonText: string;
+  link?: string;
+  disabled?: boolean;
+  discounted?: string;
+}
+
 const props = defineProps<{
   free: boolean
 }>()
@@ -13,7 +26,7 @@ const oneTimeProducts = computed(() => [
     code: 'free',
     subtitle: t('landing.freeSubtitle'),
     price: 0,
-    features: t('landing.freeFeatures'),
+    features: tm('landing.freeFeatures'),
     buttonText: t('landing.freeButton'),
     link: '/auth',
     disabled: !props.free,
@@ -25,7 +38,7 @@ const oneTimeProducts = computed(() => [
     subtitle: t('landing.basicSubtitle'),
     price: paymentState.getBasicOneTime.price,
     discounted: '9$',
-    features: t('landing.basicFeatures'),
+    features: tm('landing.basicFeatures'),
     buttonText: t('landing.basicButton'),
     link: paymentState.getBasicOneTime.link,
   },
@@ -36,11 +49,11 @@ const oneTimeProducts = computed(() => [
     price: paymentState.getBundleOneTime.price,
     discounted: '17$',
     subtitle: t('landing.bundleSubtitle'),
-    features: t('landing.bundleFeatures'),
+    features: tm('landing.bundleFeatures'),
     buttonText: t('landing.bundleButton'),
     link: paymentState.getBundleOneTime.link,
   },
-])
+] as Product[])
 
 const subscriptionProducts = computed(() => [
   {
@@ -49,7 +62,7 @@ const subscriptionProducts = computed(() => [
     code: 'professional',
     price: paymentState.getProSubscription.price,
     subtitle: t('subscriptionProducts.proSubtitle'),
-    features: t('subscriptionProducts.proFeatures'),
+    features: tm('subscriptionProducts.proFeatures'),
     buttonText: t('subscriptionProducts.proButton'),
     link: paymentState.getProSubscription.link,
   },
@@ -58,10 +71,10 @@ const subscriptionProducts = computed(() => [
     name: t('subscriptionProducts.customTitle'),
     code: 'custom',
     subtitle: t('subscriptionProducts.customSubtitle'),
-    features: t('subscriptionProducts.customFeatures'),
+    features: tm('subscriptionProducts.customFeatures'),
     buttonText: t('subscriptionProducts.customButton'),
   },
-])
+] as Product[])
 
 const tabs = computed(() => [
   { key: 'one_time', label: t('landing.oneTime'), default: true },
@@ -146,14 +159,14 @@ async function getStartedAnonymously() {
               >
                 <ul>
                   <li
-                    v-for="feature in tm(product.features)"
+                    v-for="feature in product.features"
                     :key="feature"
                     class="my-1 flex items-center gap-1"
                   >
                     <UIcon
                       name="i-solar-check-circle-bold-duotone"
                       class="h-4 w-4"
-                    /> {{ rt(feature) }}
+                    /> {{ feature }}
                   </li>
                 </ul>
               </div>

@@ -96,8 +96,8 @@ export const englishWords = {
     getStarted: 'Get started',
     feedback: 'Feedback',
     contactUs: 'Contact Us',
-    documentsCreated: 'Documents Created',
-    documentsGenerated: 'Documents Generated',
+    resumesCreated: 'Resumes Created',
+    resumesGenerated: 'Resumes Generated',
     createUsingAI: 'Create using AI',
     saveAiPreferences: 'Save AI Preferences',
     saveAiPreferencesHint: 'You need to save your AI preferences to apply them',
@@ -299,4 +299,15 @@ export const englishWords = {
     language: 'en',
     locale: 'en_US'
   },
+  thankyou: {
+    pageTitle: 'Thank You | Magic-Resume.ai',
+    metaDescription: 'Thank you for choosing Magic-Resume.ai. Your professional document journey begins here.',
+    metaKeywords: 'thank you, document builder, professional resume, Magic-Resume.ai',
+    twitterTitle: 'Thank You for Choosing Magic-Resume.ai',
+    twitterDescription: 'Your journey to a professional document starts now. Access your dashboard to begin creating.',
+    ogTitle: 'Thank You | Magic-Resume.ai',
+    ogDescription: 'Thank you for choosing Magic-Resume.ai. Your professional document journey begins here.',
+    heading: 'Thank you for your trust!',
+    almostReady: 'We are setting up your account. This will only take a moment...'
+  }
 }
