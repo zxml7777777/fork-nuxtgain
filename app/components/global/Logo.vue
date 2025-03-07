@@ -4,7 +4,7 @@ const supabaseUser = useSupabaseUser()
 
 <template>
   <div>
-    <NuxtLinkLocale :to="supabaseUser ? '/app/dashboard' : '/'">
+    <NuxtLinkLocale to="/">
       <SvgoNuxtGainLogo
         filled
         class="!w-[150px] !h-[50px]"

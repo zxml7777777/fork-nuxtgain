@@ -6,6 +6,11 @@ const { t } = useI18n()
 useHead({
   title: 'NuxtGain',
 })
+
+const route = useRoute()
+const localePath = useLocalePath()
+const getCurrentUrl = () => globalThis.location?.href || route.fullPath
+
 const payentState = usePaymentState()
 const { isPaymentModalVisible } = storeToRefs(payentState)
 const upgradeModalVisible = computed({
@@ -16,7 +21,6 @@ const upgradeModalVisible = computed({
 })
 
 const userState = useUserState()
-
 const { isUserAuthVisible } = storeToRefs(userState)
 const showAuth = computed({
   get: () => isUserAuthVisible.value,
@@ -25,7 +29,25 @@ const showAuth = computed({
   },
 })
 
-// const route = useRoute()
+// 监听用户登录状态
+const supabaseUser = useSupabaseUser()
+const router = useRouter()
+
+watch(supabaseUser, (newVal) => {
+  if (newVal) {
+    console.log('User logged in, closing auth modal...')
+    // 关闭认证模态框
+    showAuth.value = false
+    
+    // 只在非主页路径和非Dashboard路径时才自动导航到Dashboard
+    const currentPath = router.currentRoute.value.path
+    if (!currentPath.startsWith('/app/Dashboard') && currentPath !== '/' && !currentPath.startsWith('/ua')) {
+      console.log('Navigating to Dashboard...')
+      navigateTo(localePath('/app/Dashboard'))
+    }
+  }
+}, { immediate: true })
+
 // const localePath = useLocalePath()
 
 // const capctha = ref<VueHcaptcha | null>(null)
@@ -36,9 +58,9 @@ const showAuth = computed({
 // }
 
 onMounted(async () => {
-  identifyAnalytics()
-
   userState.getUserInfo()
+  // Reset auth modal visibility
+  showAuth.value = false
 
   // if (_session) {
   //   if (route.path.includes('/auth')) {
@@ -59,6 +81,7 @@ onMounted(async () => {
     <ContainerModal
       v-if="isPaymentModalVisible"
       v-model="upgradeModalVisible"
+      :title="'Upgrade'"
       :width-class="$device.isMobile ? '!max-w-full' : '!max-w-[95%]'"
     >
       <!-- <PricingTable /> -->
@@ -66,7 +89,6 @@ onMounted(async () => {
     </ContainerModal>
 
     <ContainerModal
-      v-if="isUserAuthVisible"
       v-model="showAuth"
       :title="t('auth.authWarn')"
       :body="t('auth.authWarnDesc')"
