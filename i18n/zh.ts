@@ -4,10 +4,10 @@ import landing from './zh/landing.json'
 import auth from './zh/auth.json'
 import dashboard from './zh/dashboard.json'
 
-// Export messages directly
+// Export messages with proper namespaces
 export default {
-  ...common,
-  ...landing,
-  ...auth,
-  ...dashboard
+  common,
+  landing,
+  auth,
+  dashboard
 } 

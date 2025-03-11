@@ -6,5 +6,11 @@
   "home": "Home",
   "dashboard": "Dashboard",
   "settings": "Settings",
-  "profile": "Profile"
+  "profile": "Profile",
+  "documentsCreated": "Documents Created",
+  "documentsGenerated": "Documents Generated",
+  "createDocument": "Create Document",
+  "ctaButton": "Get Started Now",
+  "information": "Information",
+  "popular": "Popular"
 } 

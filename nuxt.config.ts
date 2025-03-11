@@ -285,7 +285,7 @@ export default defineNuxtConfig({
       tsconfigRaw: {
         compilerOptions: {
           allowImportingTsExtensions: true
-        }
+        } as any
       }
     }
   },

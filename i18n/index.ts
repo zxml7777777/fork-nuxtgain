@@ -1,21 +1,19 @@
 /**
- * i18n dynamic loading system
- * This file is responsible for loading all JSON translation files for supported languages
+ * i18n 配置
+ * 这个文件符合@intlify/unplugin-vue-i18n插件的期望格式
  */
 
-// Import translations directly
+// 导入翻译文件
 import en from './en'
 import ua from './ua'
 import zh from './zh'
 
-// Create messages object
-const messages = {
-  en,
-  ua,
-  zh
-}
-
-// Export the messages object as default
+// Vue I18n插件期望有一个默认导出的函数，返回消息对象
 export default function() {
-  return messages
-}
+  // 返回包含所有翻译的对象
+  return {
+    en,
+    ua,
+    zh
+  }
+} 

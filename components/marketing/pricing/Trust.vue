@@ -2,21 +2,80 @@
   setup
   lang='tsx'
 >
+interface FaqItem {
+  answer: string
+  question: string
+}
+
+interface ReviewItem {
+  userInfo: string
+  img: string
+  name: string
+  rating: 1 | 2 | 3 | 4 | 5
+  text: string
+  title: string
+}
+
 const { t, tm } = useI18n()
 
+// Replace data.usersCount with userCount in the template
+const userCount = ref<number>(0)
+
 const faqs = computed(() => {
-  return tm('pricingFaq')?.map(i => ({ a: i.answer, q: i.question }))
+  try {
+    const rawFaqData = tm('pricingFaq')
+    // Ensure we have an array and it matches our type
+    const faqData = Array.isArray(rawFaqData) ? rawFaqData : []
+    
+    return faqData.filter((item): item is FaqItem => {
+      return item && 
+        typeof item === 'object' && 
+        'answer' in item && 
+        'question' in item &&
+        typeof item.answer === 'string' &&
+        typeof item.question === 'string'
+    }).map(i => ({ a: i.answer, q: i.question }))
+  } catch (error) {
+    console.error('Error processing FAQ data:', error)
+    return []
+  }
 })
 
 const reviews = computed(() => {
-  return tm('reviews')?.map(i => ({
-    description: i.userInfo,
-    image: i.img,
-    name: i.name,
-    rating: i.rating,
-    text: i.text,
-    title: i.title,
-  }))
+  try {
+    const rawReviewData = tm('reviews')
+    // Ensure we have an array and it matches our type
+    const reviewData = Array.isArray(rawReviewData) ? rawReviewData : []
+    
+    return reviewData.filter((item): item is ReviewItem => {
+      return item && 
+        typeof item === 'object' &&
+        'userInfo' in item &&
+        'img' in item &&
+        'name' in item &&
+        'rating' in item &&
+        'text' in item &&
+        'title' in item &&
+        typeof item.userInfo === 'string' &&
+        typeof item.img === 'string' &&
+        typeof item.name === 'string' &&
+        typeof item.rating === 'number' &&
+        item.rating >= 1 &&
+        item.rating <= 5 &&
+        typeof item.text === 'string' &&
+        typeof item.title === 'string'
+    }).map(i => ({
+      description: i.userInfo,
+      image: i.img,
+      name: i.name,
+      rating: i.rating as 1 | 2 | 3 | 4 | 5,
+      text: i.text,
+      title: i.title,
+    }))
+  } catch (error) {
+    console.error('Error processing review data:', error)
+    return []
+  }
 })
 </script>
 
@@ -62,7 +121,7 @@ const reviews = computed(() => {
         <MarketingRating
           :rating="5"
           half
-          :text="t('priceTrust.trusted', { count: data?.usersCount })"
+          :text="t('priceTrust.trusted', { count: userCount })"
           class="clients-stats self-center"
         />
 

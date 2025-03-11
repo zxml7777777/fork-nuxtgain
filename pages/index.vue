@@ -40,5 +40,19 @@ useHead({
     <LandingPricing />
     <LandingFAQ />
     <LandingCta />
+    
+    <!-- I18n调试信息 -->
+    <div class="container mx-auto my-10">
+      <details>
+        <summary class="cursor-pointer p-4 bg-gray-100 rounded font-semibold">I18n调试信息</summary>
+        <I18nDebug />
+      </details>
+      
+      <!-- I18n翻译测试 -->
+      <details>
+        <summary class="cursor-pointer p-4 bg-gray-100 rounded font-semibold mt-4">I18n翻译测试</summary>
+        <I18nTest />
+      </details>
+    </div>
   </main>
 </template>

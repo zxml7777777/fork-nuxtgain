@@ -94,5 +94,13 @@
   "menu": "Menu",
   "about": "About",
   "contact": "Contact",
-  "signup": "Sign up"
+  "signup": "Sign up",
+  
+  "indexMeta": {
+    "title": "AI Document Builder - Create Professional Documents in Minutes",
+    "description": "Create professional documents in minutes with our AI-powered tool. Save time and improve quality with smart document generation.",
+    "keywords": "AI document, professional document, document builder, document generator, resume builder",
+    "language": "English",
+    "locale": "en-US"
+  }
 } 

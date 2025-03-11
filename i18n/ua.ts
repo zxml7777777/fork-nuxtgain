@@ -4,10 +4,10 @@ import landing from './ua/landing.json'
 import auth from './ua/auth.json'
 import dashboard from './ua/dashboard.json'
 
-// Export messages directly
+// Export messages with proper namespaces
 export default {
-  ...common,
-  ...landing,
-  ...auth,
-  ...dashboard
+  common,
+  landing,
+  auth,
+  dashboard
 }
