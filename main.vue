@@ -37,17 +37,23 @@ const router = useRouter()
 const nuxtApp = useNuxtApp()
 const i18nReady = useState('i18n-ready')
 
+const { locale } = useI18n()
+const { defaultLocale } = useI18nSettings()
+
 watch(supabaseUser, (newVal) => {
   if (newVal) {
     console.log('User logged in, closing auth modal...')
-    // 关闭认证模态框
     showAuth.value = false
     
-    // 只在非主页路径和非dashboard路径时才自动导航到dashboard
     const currentPath = router.currentRoute.value.path
-    if (!currentPath.startsWith('/app/dashboard') && currentPath !== '/' && !currentPath.startsWith('/ua')) {
-      console.log('Navigating to dashboard...')
-      navigateTo(localePath('/app/dashboard'))
+    // Only redirect if not already on dashboard and not on homepage with correct language
+    if (!currentPath.startsWith('/app/dashboard') && 
+        !(currentPath === '/' && locale.value === defaultLocale)) {
+      
+      // Get localized dashboard path
+      const dashboardPath = localePath('/app/dashboard')
+      console.log('Navigating to localized dashboard:', dashboardPath)
+      navigateTo(dashboardPath)
     }
   }
 }, { immediate: true })
