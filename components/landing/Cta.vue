@@ -23,7 +23,7 @@ const handleClick = async () => {
   
   if (supabaseUser.value) {
     console.log('Navigating to dashboard...')
-    await navigateTo(localePath('/Dashboard'))
+    await navigateTo(localePath('/app/dashboard'))
   } else {
     console.log('Redirecting to auth page...')
     await navigateTo(localePath('/auth'))
@@ -44,11 +44,11 @@ watch(showAuth, (newVal) => {
 watch(supabaseUser, (newVal) => {
   if (newVal) {
     console.log('User logged in...')
-    // 只在非主页路径和非Dashboard路径时才自动导航到Dashboard
+    // 只在非主页路径和非dashboard路径时才自动导航到dashboard
     const currentPath = router.currentRoute.value.path
-    if (!currentPath.startsWith('/Dashboard') && currentPath !== '/' && !currentPath.startsWith('/ua')) {
+    if (!currentPath.startsWith('/app/dashboard') && currentPath !== '/' && !currentPath.startsWith('/ua')) {
       console.log('Navigating to dashboard...')
-      navigateTo(localePath('/Dashboard'))
+      navigateTo(localePath('/app/dashboard'))
     }
   }
 }, { immediate: true })

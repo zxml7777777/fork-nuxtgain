@@ -1,6 +1,6 @@
 <template>
   <div class="container mx-auto p-6">
-    <h1 class="text-2xl font-bold mb-6">Dashboard 命名空间加载测试</h1>
+    <h1 class="text-2xl font-bold mb-6">dashboard 命名空间加载测试</h1>
     
     <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
       <div class="bg-white rounded-lg shadow p-6">
@@ -38,13 +38,13 @@
           </div>
           <div class="mb-4">
             <span class="font-medium">dashboard命名空间是否存在:</span> 
-            <span class="ml-2 font-bold" :class="hasDashboard ? 'text-green-600' : 'text-red-600'">
-              {{ hasDashboard ? '是' : '否' }}
+            <span class="ml-2 font-bold" :class="hasdashboard ? 'text-green-600' : 'text-red-600'">
+              {{ hasdashboard ? '是' : '否' }}
             </span>
           </div>
           <div class="mt-4">
-            <UButton @click="forceLoadDashboard" color="green" :loading="loading">
-              强制加载Dashboard命名空间
+            <UButton @click="forceLoaddashboard" color="green" :loading="loading">
+              强制加载dashboard命名空间
             </UButton>
           </div>
         </div>
@@ -91,8 +91,8 @@
           <UButton @click="changeLocale" color="purple">
             切换语言 (当前: {{ currentLocale }})
           </UButton>
-          <UButton @click="checkDashboardFile" color="orange">
-            检查Dashboard文件
+          <UButton @click="checkdashboardFile" color="orange">
+            检查dashboard文件
           </UButton>
         </div>
       </div>
@@ -196,7 +196,7 @@ const availableNamespaces = computed(() => {
   return Object.keys(i18nState.value.messages[i18nState.value.locale] || {});
 });
 
-const hasDashboard = computed(() => {
+const hasdashboard = computed(() => {
   return availableNamespaces.value.includes('dashboard');
 });
 
@@ -216,10 +216,10 @@ function updateI18nState() {
     const messages = i18nState.value.messages;
     
     if (locale && messages[locale]) {
-      const hasDashboardNS = Boolean(messages[locale].dashboard);
-      console.log('[dashboard-test] dashboard命名空间存在:', hasDashboardNS);
+      const hasdashboardNS = Boolean(messages[locale].dashboard);
+      console.log('[dashboard-test] dashboard命名空间存在:', hasdashboardNS);
       
-      if (hasDashboardNS) {
+      if (hasdashboardNS) {
         console.log('[dashboard-test] dashboard命名空间内容:', 
           messages[locale].dashboard);
       }
@@ -228,7 +228,7 @@ function updateI18nState() {
 }
 
 // 增加一个加载dashboard命名空间的通用函数
-function loadDashboardNamespace(localeValue: string) {
+function loaddashboardNamespace(localeValue: string) {
   if (!localeValue) return false;
   
   try {
@@ -291,15 +291,15 @@ function loadDashboardNamespace(localeValue: string) {
   }
 }
 
-// 修改forceLoadDashboard函数，使用通用的loadDashboardNamespace函数
-async function forceLoadDashboard() {
+// 修改forceLoaddashboard函数，使用通用的loaddashboardNamespace函数
+async function forceLoaddashboard() {
   loading.value = true;
   dashboardResult.value = '';
   dashboardResultSuccess.value = false;
   
   try {
     const currentLocaleValue = useNuxtApp().$i18n?.locale?.value || 'en';
-    const success = loadDashboardNamespace(currentLocaleValue);
+    const success = loaddashboardNamespace(currentLocaleValue);
     
     if (success) {
       dashboardResult.value = `成功为${currentLocaleValue}加载dashboard命名空间`;
@@ -335,14 +335,14 @@ function changeLocale() {
     setLocale(nextLocale);
     // 语言切换后立即加载对应的dashboard命名空间
     setTimeout(() => {
-      loadDashboardNamespace(nextLocale);
+      loaddashboardNamespace(nextLocale);
       updateI18nState();
     }, 100);
   }
 }
 
 // 检查dashboard.json文件
-async function checkDashboardFile() {
+async function checkdashboardFile() {
   if (!process.client) return;
   
   try {
@@ -416,7 +416,7 @@ onBeforeMount(() => {
     // 等待i18n初始化完成
     setTimeout(() => {
       const currentLocaleValue = useNuxtApp().$i18n?.locale?.value || 'en';
-      loadDashboardNamespace(currentLocaleValue);
+      loaddashboardNamespace(currentLocaleValue);
       updateI18nState();
     }, 300);
   }

@@ -82,7 +82,7 @@ const afterCheckout = computed(() => useRouter().currentRoute.value.query.sessio
       class="text-lg text-brand-blue underline hover:no-underline"
       :class="{ 'opacity-50 cursor-not-allowed': !finishedProgress }"
     >
-      {{ t('common.returnDashboard') }}
+      {{ t('common.returndashboard') }}
     </a>
 
     <a

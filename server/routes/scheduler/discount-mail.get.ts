@@ -74,7 +74,7 @@ We're offering an exclusive 20% discount on all our plans to help you land your 
 <br>
 Don't miss out on this limited-time offer - use code <b>magicwelcome20</b> at checkout and invest in your future today!
 <br>
-<a href="https://www.magic-resume.ai/app/Dashboard?ref=discount-email">MagicResumeAI</a>
+<a href="https://www.magic-resume.ai/app/dashboard?ref=discount-email">MagicResumeAI</a>
 <br><br>
 A few things to remember about your resume:
 <br>

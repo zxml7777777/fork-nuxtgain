@@ -23,6 +23,8 @@ const isAnonym = computed(() => {
 const supabaseClient = useSupabaseClient()
 const { t } = useI18n()
 const localePath = useLocalePath()
+const { locale, setLocale } = useI18n()
+const { switchLanguage, languageNames, locales } = useI18nSettings()
 
 const items = computed(() => (
   [
@@ -46,7 +48,7 @@ const items = computed(() => (
         label: t('dashboard.pageTitle'),
         icon: 'i-heroicons-home',
         click: async () => {
-          await navigateTo(localePath('/dashboard'))
+          await navigateTo(localePath('/app/dashboard'))
         },
       },
       {
@@ -101,6 +103,19 @@ async function logout() {
   await supabaseClient.auth.signOut()
   await navigateTo(localePath('/'))
 }
+
+// 构建语言选项
+const languages = computed(() => {
+  return locales.map((code) => ({
+    label: languageNames[code] || code,
+    click: () => switchLanguage(code)
+  }))
+})
+
+// 获取当前语言名称
+const currentLanguage = computed(() => {
+  return languageNames[locale.value] || locale.value
+})
 </script>
 
 <template>
@@ -159,7 +174,23 @@ async function logout() {
                 </template>
 
                 <template #languages>
-                  <SwitchLanguage />
+                  <UDropdown
+                    mode="hover"
+                    :items="[languages]"
+                    :popper="{ placement: 'left-start', strategy: 'absolute' }"
+                  >
+                    <span class="flex items-center">
+                      <UIcon
+                        name="i-heroicons-globe-alt"
+                        class="mr-2 text-gray-400"
+                      />
+                      {{ currentLanguage }}
+                      <UIcon
+                        name="i-heroicons-chevron-right"
+                        class="mr-auto text-gray-400"
+                      />
+                    </span>
+                  </UDropdown>
                 </template>
               </UDropdown>
             </div>

@@ -40,7 +40,7 @@
   "upgrade": "升级",
   "language": "中文",
   "locale": "zh_CN",
-  "returnDashboard": "返回仪表盘",
+  "returndashboard": "返回仪表盘",
   "returnHome": "返回首页",
   "reload": "重新加载",
   "notSavedInfo": "您有未保存的更改。确定要离开此页面吗？您输入的信息将会丢失。",

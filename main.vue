@@ -43,11 +43,11 @@ watch(supabaseUser, (newVal) => {
     // 关闭认证模态框
     showAuth.value = false
     
-    // 只在非主页路径和非Dashboard路径时才自动导航到Dashboard
+    // 只在非主页路径和非dashboard路径时才自动导航到dashboard
     const currentPath = router.currentRoute.value.path
-    if (!currentPath.startsWith('/Dashboard') && currentPath !== '/' && !currentPath.startsWith('/ua')) {
-      console.log('Navigating to Dashboard...')
-      navigateTo(localePath('/Dashboard'))
+    if (!currentPath.startsWith('/app/dashboard') && currentPath !== '/' && !currentPath.startsWith('/ua')) {
+      console.log('Navigating to dashboard...')
+      navigateTo(localePath('/app/dashboard'))
     }
   }
 }, { immediate: true })

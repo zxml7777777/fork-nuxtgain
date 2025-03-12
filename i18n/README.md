@@ -99,7 +99,7 @@ const availableNamespaces = ['common', 'landing', 'auth', 'dashboard', 'new-name
 
 ## 故障排除
 
-如果你遇到翻译键显示而不是翻译内容（例如显示 `dashboard.pageTitle` 而不是 "Dashboard"），可能是因为：
+如果你遇到翻译键显示而不是翻译内容（例如显示 `dashboard.pageTitle` 而不是 "dashboard"），可能是因为：
 
 1. 命名空间未正确加载
 2. 翻译键在当前语言的命名空间中不存在
