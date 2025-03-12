@@ -8,6 +8,8 @@
   "startDate": "开始日期",
   "endDate": "结束日期",
   "datePlaceholder": "月/年",
+  "home": "首页",
+  "blog": "博客",
   "information": "信息",
   "results": "结果",
   "signedIn": "已登录为",
@@ -41,5 +43,27 @@
   "returnDashboard": "返回仪表盘",
   "returnHome": "返回首页",
   "reload": "重新加载",
-  "notSavedInfo": "您有未保存的更改。确定要离开此页面吗？您输入的信息将会丢失。"
+  "notSavedInfo": "您有未保存的更改。确定要离开此页面吗？您输入的信息将会丢失。",
+  "buyCVs": "购买简历",
+  "buySuperpowers": "购买超能力",
+  "noCVsLeft": "没有剩余简历。升级您的计划以获取更多。",
+  "remainingCVs": "剩余简历: {count}",
+  "noGenerationsLeft": "没有剩余AI生成次数。升级您的计划以获取更多。",
+  "aiGenerationsLeft": "剩余AI生成次数",
+  "plans": "套餐",
+  "scrollToTop": "回到顶部",
+  "tableOfContents": "目录",
+  "pricing": {
+    "basicPrice": "¥48.90",
+    "basicPlan": "2份简历 + 10次AI生成",
+    "bundlePrice": "¥99.90",
+    "bundlePlan": "5份简历 + 30次AI生成",
+    "discount": "52%折扣",
+    "basicDiscounted": "¥63",
+    "bundleDiscounted": "¥119",
+    "subscribe": "订阅",
+    "customPrice": "自定义",
+    "perMonth": "每月",
+    "currencySymbol": "¥"
+  }
 } 

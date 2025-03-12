@@ -2,41 +2,43 @@
   setup
   lang="ts"
 >
+import { useI18n } from 'vue-i18n'
+import { safeTranslate } from '~/utils/i18n-helper'
+
+const { t } = useI18n()
+
+// 创建安全的翻译函数
+const st = (key: string) => safeTranslate(key)
+
 const features = [
   {
-    title: 'Save Time and Effort',
-    description:
-      'Our AI-powered document builder creates professional documents tailored to your needs in just 5 minutes.',
+    title: st('landing.featureTimeSaving'),
+    description: st('landing.featureTimeSavingText'),
     icon: 'mdi:clock-time-five',
   },
   {
-    title: 'Flexible Pricing',
-    description:
-      'No subscription nonsense! Pay only for the documents you need. For professionals, we offer a convenient subscription plan tailored to your needs.',
+    title: st('landing.featureSuccess'),
+    description: st('landing.featureSuccessText'),
     icon: 'mdi:currency-usd',
   },
   {
-    title: 'Impress Top Companies',
-    description:
-      'Our AI-enhanced documents are designed to catch the attention of top companies and help you stand out from the competition.',
+    title: st('landing.featureAts'),
+    description: st('landing.featureAtsText'),
     icon: 'mdi:star',
   },
   {
-    title: 'Faster Results',
-    description:
-      'With polished, professional documents, you\'ll achieve your goals much faster.',
+    title: st('landing.featureEffortless'),
+    description: st('landing.featureEffortlessText'),
     icon: 'mdi:rocket-launch',
   },
   {
-    title: 'Expert Results',
-    description:
-      'Our AI acts as your personal professional writer, delivering expert results at a fraction of the cost.',
+    title: st('landing.featureUserFriendly'),
+    description: st('landing.featureUserFriendlyText'),
     icon: 'mdi:robot',
   },
   {
-    title: 'Unlimited Documents',
-    description:
-      'Create as many customized documents as you need for your various projects.',
+    title: st('landing.featureInstantPdf'),
+    description: st('landing.featureInstantPdfText'),
     icon: 'mdi:file-multiple',
   },
 ]
@@ -47,7 +49,7 @@ const features = [
     <div class="max-w-screen-xl mx-auto px-4 text-center md:px-8">
       <div class="max-w-2xl mx-auto">
         <h2 class="font-merriweather text-4xl lg:text-5xl font-bold lg:tracking-tight text-center">
-          Why Choose AIToolSite?
+          {{ st('landing.featuresTitle') }}
         </h2>
       </div>
       <div class="mt-12">

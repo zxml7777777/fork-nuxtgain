@@ -1,6 +1,37 @@
+interface PaymentState {
+  paymentModalVisible: boolean
+  paymentModal: {
+    title: string
+    body: string
+  }
+  subscriptions: Array<{
+    id: string
+    priceId: string 
+    name: string
+    price: string
+    link: string
+  }>
+  oneTime: Array<{
+    id: string
+    priceId: string
+    name: string 
+    price: string
+    link: string
+  }>
+}
+
 export const usePaymentState = defineStore('paymentState', () => {
   const { t } = useI18n()
   const localePath = useLocalePath()
+  const isLoading = ref(true)
+  
+  // 模拟加载完成
+  onMounted(() => {
+    setTimeout(() => {
+      isLoading.value = false
+    }, 1000)
+  })
+  
   const prices = {
     prod: [
       {
@@ -60,9 +91,13 @@ export const usePaymentState = defineStore('paymentState', () => {
   const isPaymentModalVisible = computed(() => state.paymentModalVisible)
   const getModalTitle = computed(() => state.paymentModal.title || 'Choose a plan to continue')
   const getModalBody = computed(() => state.paymentModal.body)
+  const getBasicProductLink = computed(() => getBasicOneTime.value?.link ?? '')
+  const getBundleProductLink = computed(() => getBundleOneTime.value?.link ?? '')
+  const isPriceLoading = computed(() => isLoading.value)
 
-  const getBasicProductLink = computed(() => {
+  const getBasicProductLinkWithParams = computed(() => {
     const user = useSupabaseUser()
+    if (!getBasicOneTime.value?.link) return ''
     const url = new URL(getBasicOneTime.value.link)
 
     user.value && url.searchParams.append('client_reference_id', user.value.id)
@@ -70,8 +105,9 @@ export const usePaymentState = defineStore('paymentState', () => {
     return url.toString()
   })
 
-  const getBundleProductLink = computed(() => {
+  const getBundleProductLinkWithParams = computed(() => {
     const user = useSupabaseUser()
+    if (!getBundleOneTime.value?.link) return ''
     const url = new URL(getBundleOneTime.value.link)
 
     user.value && url.searchParams.append('client_reference_id', user.value.id)
@@ -94,7 +130,7 @@ export const usePaymentState = defineStore('paymentState', () => {
     state.paymentModalVisible = visible
   }
 
-  function setPaymentModal(product: 'cvCreate' | 'cvGenerations' | 'cvPdfDownload' | 'cvEdit' | 'cvReady' | 'template') {
+  function setPaymentModal(product: 'cvCreate' | 'cvGenerations' | 'cvPdfDownload' | 'cvEdit' | 'cvReady') {
     const texts = {
       cvCreate: {
         title: t('payment.cvCreate.title'),
@@ -153,17 +189,21 @@ export const usePaymentState = defineStore('paymentState', () => {
   // }
 
   return {
-    getProSubscription,
-    getBasicOneTime,
-    getBundleOneTime,
+    state,
     isPaymentModalVisible,
     getModalTitle,
     getModalBody,
+    getProSubscription,
+    getBasicOneTime,
+    getBundleOneTime,
     getBasicProductLink,
     getBundleProductLink,
-    generateProductLink,
+    getBasicProductLinkWithParams,
+    getBundleProductLinkWithParams,
+    isPriceLoading,
     setPaymentModalVisibility,
     setPaymentModal,
+    generateProductLink,
     openPaymentModalWithText
   }
 })

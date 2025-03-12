@@ -2,21 +2,23 @@ import { defineNuxtPlugin, useState } from '#app'
 
 // 创建一个插件来处理i18n的加载状态
 export default defineNuxtPlugin((nuxtApp) => {
-  // 创建一个全局状态来跟踪i18n是否已加载
-  const i18nReady = useState('i18n-ready', () => false)
+  // 从i18n-namespace-loader中获取并使用相同的全局状态
+  const i18nReady = useState('i18n-ready')
   
-  nuxtApp.hook('app:mounted', () => {
-    // 等待一小段时间以确保i18n已经初始化
+  // 仅在i18n-namespace-loader尚未加载时进行处理
+  if (i18nReady.value === undefined || i18nReady.value === null) {
+    // 默认设置为未加载
+    i18nReady.value = false
+    
+    // 延迟一小段时间，如果i18n-namespace-loader没有处理，则设置为已加载
     setTimeout(() => {
-      i18nReady.value = true
-      console.log('[i18n-loader] i18n加载完成')
-    }, 100)
-  })
-  
-  // 提供一个全局函数来检查i18n是否准备就绪
-  return {
-    provide: {
-      i18nReady: () => i18nReady.value
-    }
+      if (!i18nReady.value) {
+        console.log('[i18n-loader] 未检测到i18n-namespace-loader的加载状态更新，设置为已加载')
+        i18nReady.value = true
+      }
+    }, 1000)
   }
+  
+  // 不再提供i18nReady函数，避免与i18n-namespace-loader冲突
+  // 由于i18n-namespace-loader.client.ts已经提供了这个函数，这里不再重复提供
 }) 

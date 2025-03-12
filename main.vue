@@ -33,6 +33,10 @@ const showAuth = computed({
 const supabaseUser = useSupabaseUser()
 const router = useRouter()
 
+// 使用全局i18n加载状态
+const nuxtApp = useNuxtApp()
+const i18nReady = useState('i18n-ready')
+
 watch(supabaseUser, (newVal) => {
   if (newVal) {
     console.log('User logged in, closing auth modal...')
@@ -61,23 +65,45 @@ onMounted(async () => {
   userState.getUserInfo()
   // Reset auth modal visibility
   showAuth.value = false
-
-  // if (_session) {
-  //   if (route.path.includes('/auth')) {
-  //     await navigateTo(localePath('/dashboard'))
-  //   }
-  // } else {
-  //   await navigateTo(localePath('/auth'))
-  // }
-  // })
+  
+  // 调试i18n加载状态
+  console.log('[main] 当前i18nReady状态:', i18nReady.value)
+  
+  // 如果i18n尚未加载完成，创建一个watcher来监听状态变化
+  if (!i18nReady.value) {
+    console.log('[main] i18n尚未加载完成，设置监听器')
+    
+    const unwatch = watch(i18nReady, (newVal) => {
+      console.log('[main] i18nReady状态变更为:', newVal)
+      if (newVal === true) {
+        console.log('[main] i18n加载完成，移除监听器')
+        // 状态变为true后取消监听
+        unwatch()
+      }
+    })
+    
+    // 设置安全超时，确保不会无限期等待
+    setTimeout(() => {
+      if (!i18nReady.value) {
+        console.warn('[main] i18n加载超时，强制设置为已加载')
+        i18nReady.value = true
+      }
+    }, 3000) // 3秒超时
+  }
 })
 </script>
 
 <template>
   <div>
-    <NuxtLayout class="bg-white font-sans">
+    <!-- 全局loading状态 -->
+    <div v-if="!i18nReady" class="fixed inset-0 bg-white z-50 flex items-center justify-center">
+      <BaseLoader />
+    </div>
+
+    <NuxtLayout v-else class="bg-white font-sans">
       <NuxtPage />
     </NuxtLayout>
+    
     <ContainerModal
       v-if="isPaymentModalVisible"
       v-model="upgradeModalVisible"

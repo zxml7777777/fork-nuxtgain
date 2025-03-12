@@ -1,0 +1,27 @@
+{
+  "proTitle": "Professional Plan",
+  "proSubtitle": "For professionals and small teams",
+  "proFeatures": [
+    "Unlimited documents",
+    "All advanced AI features",
+    "Priority support 24/7",
+    "Team collaboration",
+    "Advanced analytics",
+    "Custom branding",
+    "API access"
+  ],
+  "proButton": "Subscribe Now",
+  
+  "customTitle": "Enterprise Plan",
+  "customSubtitle": "For large organizations",
+  "customFeatures": [
+    "Everything in Professional plan",
+    "Dedicated account manager",
+    "Custom AI training",
+    "Single sign-on (SSO)",
+    "Advanced security features",
+    "Volume discounts",
+    "Custom integration"
+  ],
+  "customButton": "Contact Sales"
+} 

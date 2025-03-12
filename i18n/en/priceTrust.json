@@ -1,0 +1,24 @@
+{
+  "title": "Choose a Plan to Get Started",
+  "lifetime": {
+    "sub": "Lifetime Access",
+    "text": "Get permanent access to all content after purchase, no subscription required."
+  },
+  "oneTime": {
+    "sub": "One-time Payment",
+    "text": "No automatic renewals or hidden fees."
+  },
+  "missOut": {
+    "sub": "Don't Miss Out",
+    "text": "Current prices are a limited-time offer and will increase in the future."
+  },
+  "guarantee": {
+    "sub": "30-Day Money-Back Guarantee",
+    "text": "If you're not satisfied, we offer a 30-day unconditional refund."
+  },
+  "trusted": "Trusted by over {count} users",
+  "companies": "Trusted Companies",
+  "safe": "Secure Payment",
+  "cta": "Buy Now",
+  "ctaMob": "Buy"
+} 

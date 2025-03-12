@@ -15,26 +15,26 @@ const runnedOutLabel = computed(() => {
   if (getUserCvLeft.value === 0 && getUserGenerated.value === 0) {
     return t('common.upgrade')
   } else if (getUserCvLeft.value === 0) {
-    return 'Buy CVs'
+    return t('common.buyCVs')
   } else if (getUserGenerated.value === 0) {
-    return 'Buy Superpowers'
+    return t('common.buySuperpowers')
   } else {
-    return 'Upgrade'
+    return t('common.upgrade')
   }
 })
 
 const remainCvsText = computed(() => {
   if (getUserCvLeft.value === 0) {
-    return 'No CVs left. Upgrade your plan to get more.'
+    return t('common.noCVsLeft')
   }
-  return `Remaining CVs: ${getUserCvLeft.value}`
+  return t('common.remainingCVs', { count: getUserCvLeft.value })
 })
 
 const remainGenerationsText = computed(() => {
   if (getUserGenerated.value === 0) {
-    return 'No AI generations left. Upgrade your plan to get more.'
+    return t('common.noGenerationsLeft')
   }
-  return `AI generations Left`
+  return t('common.aiGenerationsLeft')
 })
 
 const remainCvsColor = computed(() => {

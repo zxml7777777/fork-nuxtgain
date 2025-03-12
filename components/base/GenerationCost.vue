@@ -1,7 +1,10 @@
 <script setup lang='ts'>
+import { useI18n } from 'vue-i18n'
+const { t } = useI18n()
 const props = defineProps<{
   count?: string
-  text: string
+  textKey: string
+  textParams?: Record<string, unknown>
   textColor?: string
 }>()
 </script>
@@ -15,6 +18,6 @@ const props = defineProps<{
         class="text-lg"
       />
     </span>
-    <span class="ml-[4px]" :class="textColor">{{ text }}</span>
+    <span class="ml-[4px]" :class="textColor">{{ t(textKey, textParams || {}) }}</span>
   </span>
 </template>

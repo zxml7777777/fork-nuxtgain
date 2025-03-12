@@ -210,7 +210,12 @@ export default defineNuxtConfig({
     },
     strategy: 'prefix_except_default',
     langDir: './i18n/',
-    lazy: true
+    lazy: true,
+    skipSettingLocaleOnNavigate: true,
+    compilation: {
+      strictMessage: false,
+      escapeHtml: true
+    }
   },
 
   // Set default color mode
@@ -310,4 +315,9 @@ export default defineNuxtConfig({
       xxl: 1536,
     }
   },
+
+  // 全局CSS文件
+  css: [
+    '~/assets/css/global.css',
+  ],
 })

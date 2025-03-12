@@ -1,7 +1,9 @@
 <script setup>
 // Scroll handling
 import { nextTick, onUnmounted, ref } from 'vue'
+import { useI18n } from 'vue-i18n'
 
+const { t } = useI18n()
 const isVisible = ref(false)
 function handleScroll() {
   // Only run the code if we are on the client
@@ -32,7 +34,7 @@ onUnmounted(() => {
       aria-label="Scroll to Top"
       class="flex flex-col items-center py-1 text-center"
     >
-      <span class="text-xxs leading-xxs uppercase font-highlight sm:w-6/12">Scroll to Top</span>
+      <span class="text-xxs leading-xxs uppercase font-highlight sm:w-6/12">{{ t('common.scrollToTop') }}</span>
       <BlogIconsArrowUp
         class="w-4 h-4"
         width="16"

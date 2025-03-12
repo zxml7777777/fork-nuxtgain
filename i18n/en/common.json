@@ -10,7 +10,30 @@
   "documentsCreated": "Documents Created",
   "documentsGenerated": "Documents Generated",
   "createDocument": "Create Document",
-  "ctaButton": "Get Started Now",
+  "ctaButton": "Get Started",
   "information": "Information",
-  "popular": "Popular"
+  "popular": "Popular",
+  "buyCVs": "Buy CVs",
+  "buySuperpowers": "Buy Superpowers",
+  "upgrade": "Upgrade",
+  "noCVsLeft": "No CVs left. Upgrade your plan to get more.",
+  "remainingCVs": "{count} CVs left",
+  "noGenerationsLeft": "No generations left. Upgrade your plan to get more.",
+  "aiGenerationsLeft": "AI generations Left",
+  "plans": "Plans",
+  "scrollToTop": "Scroll to Top",
+  "tableOfContents": "Table of Contents",
+  "pricing": {
+    "basicPrice": "$6.90",
+    "basicPlan": "2 CV + 10 AI Generations",
+    "bundlePrice": "$14.90",
+    "bundlePlan": "5 CV + 30 AI Generations",
+    "discount": "52% OFF",
+    "basicDiscounted": "$9",
+    "bundleDiscounted": "$17",
+    "subscribe": "Subscribe",
+    "customPrice": "Custom",
+    "perMonth": "Per Month",
+    "currencySymbol": "$"
+  }
 } 

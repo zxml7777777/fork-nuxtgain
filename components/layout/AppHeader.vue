@@ -58,7 +58,7 @@ const items = computed(() => (
         class: `${isAnonym.value ? '' : 'hidden'}`
       },
       {
-        label: 'Plans',
+        label: t('common.plans'),
         icon: 'i-heroicons-credit-card',
         click: () => {
           paymentState.setPaymentModalVisibility(true)

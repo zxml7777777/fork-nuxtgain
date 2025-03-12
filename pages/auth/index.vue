@@ -2,8 +2,6 @@
 import { ThemeSupa } from '@supabase/auth-ui-shared'
 import { Auth } from '@nuxtbase/auth-ui-vue'
 
-import { englishWords } from '../../i18n/en'
-
 const { t } = useI18n()
 
 useHead({
@@ -12,17 +10,8 @@ useHead({
 
 const supabaseClient = useSupabaseClient()
 
-const authLocale = {} as any
-
-if (englishWords && englishWords.auth) {
-  Object.keys(englishWords.auth).forEach((key) => {
-    authLocale[key] = {}
-    const item = englishWords.auth[key as keyof typeof englishWords.auth]
-    Object.keys(item).forEach((key2) => {
-      authLocale[key][key2] = t(`auth.${key}.${key2}`)
-    })
-  })
-}
+// 不需要在此文件中处理 authLocale，因为现在使用 AuthForm 组件
+// AuthForm 组件已经处理了本地化
 
 const redirectTo = `${globalThis.location?.origin}/auth/finish`
 </script>

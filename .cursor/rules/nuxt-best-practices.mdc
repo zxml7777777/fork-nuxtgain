@@ -1,0 +1,11 @@
+---
+description: Best practices for Nuxt.js applications
+globs: **/*.{ts,tsx,js,jsx,vue}
+alwaysApply: false
+---
+# Your rule content
+
+- Use asyncData for server-side data fetching
+- Implement proper error handling with NuxtErrorBoundary
+- Utilize Nuxt's built-in SEO features
+- Leverage Nuxt's modular architecture for better organization

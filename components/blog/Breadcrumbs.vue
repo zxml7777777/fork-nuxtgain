@@ -2,10 +2,20 @@
   setup
   lang='ts'
 >
+import { useI18n } from 'vue-i18n'
+import { safeTranslateWithFunction } from '~/utils/i18n-helper'
+
+const { t } = useI18n()
+const st = (key: string) => safeTranslateWithFunction(t, key)
+
 const props = defineProps<{
   currentLink?: string
   isBlog?: boolean
 }>()
+
+// 使用翻译键
+const homeText = st('common.home')
+const blogText = st('common.blog')
 </script>
 
 <template>
@@ -27,7 +37,7 @@ const props = defineProps<{
           href="/"
           class="text-blue-600 hover:underline"
         >
-          <span itemprop="name">Home</span>
+          <span itemprop="name">{{ homeText }}</span>
         </a>
         <meta
           itemprop="position"
@@ -42,7 +52,7 @@ const props = defineProps<{
         itemtype="https://schema.org/ListItem"
       >
         <template v-if="props.isBlog">
-          <span itemprop="name">Blog</span>
+          <span itemprop="name">{{ blogText }}</span>
           <meta
             itemprop="position"
             content="2"
@@ -57,7 +67,7 @@ const props = defineProps<{
             href="/blog/"
             class="text-blue-600 hover:underline"
           >
-            <span itemprop="name">Blog</span>
+            <span itemprop="name">{{ blogText }}</span>
           </a>
           <meta
             itemprop="position"

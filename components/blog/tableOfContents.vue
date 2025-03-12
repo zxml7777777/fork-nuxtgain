@@ -1,10 +1,14 @@
 <script setup>
+import { useI18n } from 'vue-i18n'
+
 defineProps({
   links: {
     type: Array,
     required: true
   }
 })
+
+const { t } = useI18n()
 
 // flatten TOC links nested arrays to one array
 function flattenLinks(links) {
@@ -35,7 +39,7 @@ function toggleToc() {
       aria-label="Expand the table of contents."
       @click="toggleToc"
     >
-      <span class="blog-aside-title mb-0">Table of Contents</span>
+      <span class="blog-aside-title mb-0">{{ t('common.tableOfContents') }}</span>
       <BlogIconsChevronDown
         class="w-6 h-6 transform"
         :class="[isVisible ? '' : 'rotate-180']"

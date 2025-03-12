@@ -1,4 +1,9 @@
 <script setup>
+import { useI18n } from 'vue-i18n'
+
+// 使用i18n翻译
+const { t } = useI18n()
+
 // Find the number of blogs present
 // const blogCountLimit = 6
 // const { data } = await useAsyncData(`content-/blog`, async () => {
@@ -6,8 +11,9 @@
 //   return Math.ceil(_posts.length / blogCountLimit)
 // })
 
-const pageTitle = 'AIToolSite - The Ultimate AI-Powered Tool Platform'
-const pageDescription = 'AIToolSite is an AI-powered platform designed for professionals. Create customizable, professional documents quickly and efficiently. Secure and user-friendly, AIToolSite enhances your workflow with AI technology.'
+// 使用翻译键获取页面标题和描述
+const pageTitle = t('blog.pageTitle') || 'AIToolSite - The Ultimate AI-Powered Tool Platform'
+const pageDescription = t('blog.pageDescription') || 'AIToolSite is an AI-powered platform designed for professionals. Create customizable, professional documents quickly and efficiently. Secure and user-friendly, AIToolSite enhances your workflow with AI technology.'
 const canonicalPath = 'https://www.aitoolsite.com/blog/'
 const image = 'https://www.aitoolsite.com/summary_image.jpeg'
 const socialImageAlt = 'AI-Powered Document Tools'
