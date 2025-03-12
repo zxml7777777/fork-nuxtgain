@@ -32,6 +32,11 @@ useHead({
 
 <template>
   <main>
+    <!-- Add language switcher in a subtle position -->
+    <div class="absolute top-4 right-4">
+      <LanguageSwitcher />
+    </div>
+    
     <LandingHero />
     <LandingTestimonials />
     <LandingProblemSolution />
@@ -40,19 +45,5 @@ useHead({
     <LandingPricing />
     <LandingFAQ />
     <LandingCta />
-    
-    <!-- I18n调试信息 -->
-    <div class="container mx-auto my-10">
-      <details>
-        <summary class="cursor-pointer p-4 bg-gray-100 rounded font-semibold">I18n调试信息</summary>
-        <I18nDebug />
-      </details>
-      
-      <!-- I18n翻译测试 -->
-      <details>
-        <summary class="cursor-pointer p-4 bg-gray-100 rounded font-semibold mt-4">I18n翻译测试</summary>
-        <I18nTest />
-      </details>
-    </div>
   </main>
 </template>

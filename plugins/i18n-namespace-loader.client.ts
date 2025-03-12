@@ -8,18 +8,21 @@ import landingEn from '~/i18n/en/landing.json'
 import authEn from '~/i18n/en/auth.json'
 import dashboardEn from '~/i18n/en/dashboard.json'
 import blogEn from '~/i18n/en/blog.json'
+import priceTrustEn from '~/i18n/en/priceTrust.json'
 
 import commonZh from '~/i18n/zh/common.json'
 import landingZh from '~/i18n/zh/landing.json'
 import authZh from '~/i18n/zh/auth.json'
 import dashboardZh from '~/i18n/zh/dashboard.json'
 import blogZh from '~/i18n/zh/blog.json'
+import priceTrustZh from '~/i18n/zh/priceTrust.json'
 
 import commonUa from '~/i18n/ua/common.json'
 import landingUa from '~/i18n/ua/landing.json'
 import authUa from '~/i18n/ua/auth.json'
 import dashboardUa from '~/i18n/ua/dashboard.json'
 import blogUa from '~/i18n/ua/blog.json'
+import priceTrustUa from '~/i18n/ua/priceTrust.json'
 
 // 使用更通用的类型定义，以支持复杂的翻译结构（包括嵌套对象和数组）
 type TranslationData = Record<string, any>;
@@ -33,26 +36,29 @@ const namespaceTranslations: LocaleTranslations = {
     landing: landingEn,
     auth: authEn,
     dashboard: dashboardEn,
-    blog: blogEn
+    blog: blogEn,
+    priceTrust: priceTrustEn
   },
   zh: {
     common: commonZh,
     landing: landingZh,
     auth: authZh,
     dashboard: dashboardZh,
-    blog: blogZh
+    blog: blogZh,
+    priceTrust: priceTrustZh
   },
   ua: {
     common: commonUa,
     landing: landingUa,
     auth: authUa,
     dashboard: dashboardUa,
-    blog: blogUa
+    blog: blogUa,
+    priceTrust: priceTrustUa
   }
 };
 
 // 所有可用的命名空间列表
-const availableNamespaces = ['common', 'landing', 'auth', 'dashboard', 'blog'];
+const availableNamespaces = ['common', 'landing', 'auth', 'dashboard', 'blog', 'priceTrust'];
 
 // 页面路径与所需命名空间的映射关系
 const pageNamespaceMap: Record<string, string[]> = {
@@ -69,7 +75,9 @@ const pageNamespaceMap: Record<string, string[]> = {
   // i18n-dashboard-test页面使用dashboard命名空间
   '^/i18n-dashboard-test': ['dashboard'],
   // i18n-test页面使用所有命名空间
-  '^/i18n-test': availableNamespaces
+  '^/i18n-test': availableNamespaces,
+  // 添加价格页面的映射
+  '^/pricing': ['priceTrust'],
 };
 
 // 定义i18n实例的简化类型
