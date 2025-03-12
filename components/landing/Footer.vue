@@ -5,7 +5,9 @@ translations:
   lang="tsx"
 >
 const { t } = useI18n()
-const footerLinks = [
+const { locale } = useI18n()
+
+const footerLinks = computed(() => [
   {
     href: '/',
     name: t('landing.home'),
@@ -30,9 +32,9 @@ const footerLinks = [
     href: '/#features',
     name: t('landing.features'),
   },
-]
+])
 
-const legalLinks = [
+const legalLinks = computed(() => [
   {
     href: '/legal/terms-of-use',
     name: t('landing.termsOfUse'),
@@ -41,7 +43,7 @@ const legalLinks = [
     href: '/legal/privacy-policy',
     name: t('landing.privacyPolicy'),
   },
-]
+])
 
 function SectionHeader({ title }: { title: string }) {
   return (

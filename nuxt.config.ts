@@ -1,4 +1,7 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
+// 导入默认语言设置
+import { defaultLocale } from './composables/useI18nSettings'
+
 export default defineNuxtConfig({
   // Configure the app's head metadata
   app: {
@@ -182,7 +185,7 @@ export default defineNuxtConfig({
   // Configure i18n for internationalization
   i18n: {
     vueI18n: './i18n/vue-i18n.ts',
-    defaultLocale: 'en',
+    defaultLocale: defaultLocale,
     locales: [
       {
         code: 'en',

@@ -54,16 +54,16 @@
   "scrollToTop": "Прокрутити вгору",
   "tableOfContents": "Зміст",
   "pricing": {
-    "basicPrice": "€6.90",
+    "basicPrice": "$6.90",
     "basicPlan": "2 резюме + 10 ШІ генерацій",
-    "bundlePrice": "€14.90",
+    "bundlePrice": "$14.90",
     "bundlePlan": "5 резюме + 30 ШІ генерацій",
     "discount": "Знижка 52%",
-    "basicDiscounted": "€9",
-    "bundleDiscounted": "€17",
+    "basicDiscounted": "$9",
+    "bundleDiscounted": "$17",
     "subscribe": "Підписатися",
     "customPrice": "Індивідуально",
     "perMonth": "На місяць",
-    "currencySymbol": "€"
+    "currencySymbol": "$"
   }
 } 

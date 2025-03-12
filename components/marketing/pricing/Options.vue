@@ -16,7 +16,7 @@ const { isMobile } = useDevice()
 const activePrice = ref(1)
 const isLoading = ref(true)
 
-// 模拟加载完成
+// 模拟加载完成我那个痘啊，别这样啊。
 onMounted(() => {
   setTimeout(() => {
     isLoading.value = false

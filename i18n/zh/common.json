@@ -54,16 +54,16 @@
   "scrollToTop": "回到顶部",
   "tableOfContents": "目录",
   "pricing": {
-    "basicPrice": "¥48.90",
+    "basicPrice": "$6.90",
     "basicPlan": "2份简历 + 10次AI生成",
-    "bundlePrice": "¥99.90",
+    "bundlePrice": "$12.90",
     "bundlePlan": "5份简历 + 30次AI生成",
     "discount": "52%折扣",
-    "basicDiscounted": "¥63",
-    "bundleDiscounted": "¥119",
+    "basicDiscounted": "$8.90",
+    "bundleDiscounted": "$15.90",
     "subscribe": "订阅",
     "customPrice": "自定义",
     "perMonth": "每月",
-    "currencySymbol": "¥"
+    "currencySymbol": "$"
   }
 } 

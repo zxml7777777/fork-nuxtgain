@@ -1,5 +1,6 @@
 // @ts-ignore - 忽略模块未找到的TypeScript错误
 import getMessages from './index'
+import { defaultLocale } from '~/composables/useI18nSettings'
 
 export default defineI18nConfig(() => {
   const messages = getMessages()
@@ -8,6 +9,7 @@ export default defineI18nConfig(() => {
   if (process.client) {
     console.log('[i18n] 初始化配置：', {
       availableMessages: Object.keys(messages),
+      defaultLocale, // 添加默认语言到日志
       enSample: messages.en ? {
         keys: Object.keys(messages.en),
         hasLanding: messages.en.landing !== undefined,
@@ -24,7 +26,7 @@ export default defineI18nConfig(() => {
     // 匹配 /ua/ 或 /ua 开头的路径
     if (/^\/(ua)(\/|$)/.test(path)) return 'ua'
     // 默认返回英文
-    return 'en'
+    return defaultLocale // 使用全局默认语言设置
   }
   
   const currentPath = process.server ? useRoute().path : window.location.pathname
@@ -38,7 +40,7 @@ export default defineI18nConfig(() => {
   return {
     legacy: false,
     locale: detectedLocale, // 根据路径检测语言，使客户端和服务端保持一致
-    fallbackLocale: 'en',   // 设置英语为回退语言
+    fallbackLocale: defaultLocale,   // 使用全局默认语言设置为回退语言
     messages,
     missingWarn: false,     // 禁用缺少翻译时的警告，避免控制台错误
     fallbackWarn: false,    // 禁用使用回退值时的警告，避免控制台错误
