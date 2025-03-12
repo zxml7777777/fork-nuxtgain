@@ -12,8 +12,13 @@ onMounted(async () => {
   const redirectTo = route.query.redirect as string
   const targetPath = redirectTo || '/app/dashboard'
   
-  // 确保只重定向到内部路径
-  const normalizedPath = targetPath.startsWith('/') ? targetPath : '/app/dashboard'
+  // 确保只重定向到内部路径，并且修正dashboard路径
+  let normalizedPath = targetPath.startsWith('/') ? targetPath : '/app/dashboard'
+  
+  // 修正：如果路径是/dashboard，改为/app/dashboard
+  if (normalizedPath === '/dashboard' || normalizedPath.endsWith('/dashboard')) {
+    normalizedPath = '/app/dashboard'
+  }
   
   await navigateTo(localePath(normalizedPath))
 })
